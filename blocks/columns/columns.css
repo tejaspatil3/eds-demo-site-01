@@ -1,33 +1,115 @@
-.columns > div {
+.columns {
   display: flex;
   flex-direction: column;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 900px) {
+  .columns {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.columns > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .columns img {
   width: 100%;
-}
-
-.columns > div > div {
-  order: 1;
-}
-
-.columns > div > .columns-img-col {
-  order: 0;
-}
-
-.columns > div > .columns-img-col img {
+  height: auto;
   display: block;
+  border-radius: 8px;
 }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
+.columns.about-us {
+  align-items: center;
+}
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-  }
+.columns.about-us ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.columns.about-us ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.columns.about-us ul li::before {
+  content: "✓";
+  color: #0b57d0;
+  font-weight: bold;
+}
+
+.columns.faq-split {
+  align-items: center;
+  gap: 40px;
+}
+
+.columns.faq-split .columns-text-col p:first-child {
+  color: #0b57d0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin: 0;
+}
+
+.columns.faq-split .columns-text-col h2 {
+  font-size: 32px;
+  color: #111111;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.columns.faq-split details {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.columns.faq-split summary {
+  background-color: #ffffff;
+  color: #111111;
+  padding: 16px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.columns.faq-split summary::-webkit-details-marker {
+  display: none;
+}
+
+.columns.faq-split details[open] summary {
+  background-color: #0b57d0;
+  color: #ffffff;
+}
+
+.columns.faq-split details > div {
+  padding: 16px 20px;
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
 }

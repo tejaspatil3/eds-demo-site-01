@@ -47,21 +47,28 @@ function showSlide(block, slideIndex = 0) {
 
 function bindEvents(block) {
   const slideIndicators = block.querySelector('.carousel-slide-indicators');
-  if (!slideIndicators) return;
-
-  slideIndicators.querySelectorAll('button').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      const slideIndicator = e.currentTarget.parentElement;
-      showSlide(block, parseInt(slideIndicator.dataset.targetSlide, 10));
+  if (slideIndicators) {
+    slideIndicators.querySelectorAll('button').forEach((button) => {
+      button.addEventListener('click', (e) => {
+        const slideIndicator = e.currentTarget.parentElement;
+        showSlide(block, parseInt(slideIndicator.dataset.targetSlide, 10));
+      });
     });
-  });
+  }
 
-  block.querySelector('.slide-prev').addEventListener('click', () => {
-    showSlide(block, parseInt(block.dataset.activeSlide, 10) - 1);
-  });
-  block.querySelector('.slide-next').addEventListener('click', () => {
-    showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
-  });
+  const prevButton = block.querySelector('.slide-prev');
+  const nextButton = block.querySelector('.slide-next');
+
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      showSlide(block, parseInt(block.dataset.activeSlide, 10) - 1);
+    });
+  }
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
+    });
+  }
 
   const slideObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -109,7 +116,6 @@ export default async function decorate(block) {
 
   const slidesWrapper = document.createElement('ul');
   slidesWrapper.classList.add('carousel-slides');
-  block.prepend(slidesWrapper);
 
   let slideIndicators;
   if (!isSingleSlide) {
@@ -123,10 +129,9 @@ export default async function decorate(block) {
     const slideNavButtons = document.createElement('div');
     slideNavButtons.classList.add('carousel-navigation-buttons');
     slideNavButtons.innerHTML = `
-      <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
+      <button type="button" class="slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
       <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
     `;
-
     container.append(slideNavButtons);
   }
 

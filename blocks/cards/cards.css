@@ -25,3 +25,151 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/* varient - small icons and description */
+
+/* Cards Block Base Styles 
+/* .cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.cards > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+}
+
+.cards > ul > li {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards .cards-card-image {
+  line-height: 0;
+}
+
+.cards .cards-card-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.cards .cards-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+} */
+
+
+/* Variant 1: Counters (Statistics Cards) */
+.cards.counters > ul {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 600px) {
+  .cards.counters > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cards.counters > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cards.counters > ul > li {
+  text-align: center;
+  padding: 32px 20px;
+  align-items: center;
+}
+
+.cards.counters .cards-card-image img,
+.cards.counters .cards-card-image svg {
+  width: 36px;
+  height: 36px;
+  filter: invert(24%) sepia(91%) saturate(2462%) hue-rotate(205deg) brightness(96%) contrast(97%);
+}
+
+.cards.counters .cards-card-body p:first-of-type,
+.cards.counters .cards-card-body h3,
+.cards.counters .cards-card-body h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0b57d0;
+  margin: 0;
+  line-height: 1;
+}
+
+.cards.counters .cards-card-body p:last-of-type {
+  font-size: 15px;
+  color: #333333;
+  font-weight: 500;
+  margin: 0;
+}
+
+
+/* Variant 2: Services (Grid Cards) */
+.cards.services > ul {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 600px) {
+  .cards.services > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cards.services > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cards.services > ul > li {
+  text-align: center;
+  padding: 32px 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards.services .cards-card-image img,
+.cards.services .cards-card-image svg {
+  width: 40px;
+  height: 40px;
+  filter: invert(24%) sepia(91%) saturate(2462%) hue-rotate(205deg) brightness(96%) contrast(97%);
+  margin-bottom: 8px;
+}
+
+.cards.services .cards-card-body {
+  padding: 0;
+  align-items: center;
+}
+
+.cards.services .cards-card-body h3,
+.cards.services .cards-card-body h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+}
+
+.cards.services .cards-card-body p {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.5;
+  margin: 0;
+}
