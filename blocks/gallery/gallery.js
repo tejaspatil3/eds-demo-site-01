@@ -2,6 +2,7 @@
 export default function decorate(block) {
   const rows = [...block.children];
   const getCells = (row) => [...row.children];
+  const isShowcase = block.classList.contains('showcase');
 
   const heading = getCells(rows[0] || document.createElement('div'))[0];
   const description = getCells(rows[1] || document.createElement('div'))[0];
@@ -47,60 +48,82 @@ export default function decorate(block) {
     img.loading = 'lazy';
     img.alt = image.alt || cardTitle;
     picture.append(img);
-
-    const overlay = document.createElement('div');
-    overlay.className = 'gallery-overlay';
-
-    const icon = document.createElement('span');
-    icon.className = 'gallery-overlay-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>';
-
-    const text = document.createElement('div');
-    text.className = 'gallery-overlay-text';
-
-    const name = document.createElement('h3');
-    name.textContent = cardTitle;
-
-    const type = document.createElement('p');
-    type.textContent = category;
-
-    text.append(name, type);
-    overlay.append(icon, text);
-    picture.append(overlay);
     card.append(picture);
+
+    if (isShowcase) {
+      const caption = document.createElement('div');
+      caption.className = 'gallery-caption';
+
+      const name = document.createElement('h3');
+      name.textContent = cardTitle;
+
+      const type = document.createElement('p');
+      type.textContent = category;
+
+      caption.append(name, type);
+      card.append(caption);
+    } else {
+      const overlay = document.createElement('div');
+      overlay.className = 'gallery-overlay';
+
+      const icon = document.createElement('span');
+      icon.className = 'gallery-overlay-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>';
+
+      const text = document.createElement('div');
+      text.className = 'gallery-overlay-text';
+
+      const name = document.createElement('h3');
+      name.textContent = cardTitle;
+
+      const type = document.createElement('p');
+      type.textContent = category;
+
+      text.append(name, type);
+      overlay.append(icon, text);
+      picture.append(overlay);
+    }
 
     return card;
   }).filter(Boolean);
 
-  const filterNames = ['All Work', ...categories];
+  if (!isShowcase) {
+    const filterNames = ['All Work', ...categories];
 
-  filterNames.forEach((category, index) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'gallery-filter';
-    button.textContent = category;
-    button.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+    filterNames.forEach((category, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'gallery-filter';
+      button.textContent = category;
+      button.setAttribute('aria-pressed', String(index === 0));
 
-    if (index === 0) button.classList.add('active');
+      if (index === 0) button.classList.add('active');
 
-    button.addEventListener('click', () => {
-      filters.querySelectorAll('button').forEach((item) => {
-        const active = item === button;
-        item.classList.toggle('active', active);
-        item.setAttribute('aria-pressed', String(active));
+      button.addEventListener('click', () => {
+        filters.querySelectorAll('button').forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-pressed', String(active));
+        });
+
+        cards.forEach((card) => {
+          card.hidden = index !== 0
+            && card.dataset.category !== category.toLowerCase();
+        });
       });
 
-      cards.forEach((card) => {
-        card.hidden = index !== 0
-          && card.dataset.category !== category.toLowerCase();
-      });
+      filters.append(button);
     });
-
-    filters.append(button);
-  });
+  }
 
   grid.append(...cards);
-  section.append(intro, filters, grid);
+
+  if (isShowcase) {
+    section.append(intro, grid);
+  } else {
+    section.append(intro, filters, grid);
+  }
+
   block.replaceChildren(section);
 }
