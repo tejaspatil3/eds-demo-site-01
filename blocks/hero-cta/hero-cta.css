@@ -1,0 +1,140 @@
+
+.hero-cta {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 364px;
+  margin: 0;
+  padding: 48px 4.4%;
+  box-sizing: border-box;
+  color: #fff;
+  background-image:
+    linear-gradient(rgb(10 22 34 / 58%), rgb(10 22 34 / 58%)),
+    var(--hero-cta-background);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-cta .hero-cta-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.hero-cta .hero-cta-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-cta .hero-cta-eyebrow {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.hero-cta .hero-cta-copy h1 {
+  max-width: 800px;
+  margin: 0;
+  color: #fff;
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+.hero-cta .hero-cta-button {
+  display: inline-flex;
+  flex: 0 0 155px;
+  align-items: center;
+  justify-content: center;
+  min-height: 71px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: #0860d9;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.hero-cta .hero-cta-button:hover {
+  background: #004bb5;
+}
+
+.hero-cta .hero-cta-button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .hero-cta {
+    min-height: 320px;
+    padding: 36px 24px;
+  }
+
+  .hero-cta .hero-cta-content {
+    gap: 24px;
+  }
+
+  .hero-cta .hero-cta-copy h1 {
+    font-size: 32px;
+  }
+
+  .hero-cta .hero-cta-button {
+    flex-basis: 125px;
+    min-height: 58px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-cta {
+    min-height: 340px;
+    padding: 32px 20px;
+  }
+
+  .hero-cta .hero-cta-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .hero-cta .hero-cta-copy h1 {
+    font-size: 30px;
+  }
+
+  .hero-cta .hero-cta-button {
+    flex-basis: auto;
+    min-height: 52px;
+    padding: 0 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta .hero-cta-button {
+    transition: none;
+  }
+}
+
+.hero-cta-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-cta-container .hero-cta-wrapper {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
