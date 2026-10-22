@@ -1,0 +1,142 @@
+
+.testimonials {
+  padding: 20px 0;
+}
+
+.testimonials .testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1068px;
+  margin: 0 auto;
+}
+
+.testimonials .testimonial-card {
+  min-width: 0;
+  padding: 32px 14px 26px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+}
+
+/* Profile layout */
+.testimonials .testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+  margin-bottom: 12px;
+}
+
+.testimonials .testimonial-photo-wrap {
+  flex: 0 0 66px;
+  width: 66px;
+  height: 66px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.testimonials .testimonial-photo-wrap picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.testimonials .testimonial-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.testimonials .testimonial-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.testimonials .testimonial-details h3 {
+  margin: 0 0 3px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.testimonials .testimonial-role {
+  margin: 0;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Rating */
+.testimonials .testimonial-rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.testimonials .testimonial-stars {
+  color: #0756e8;
+  font-size: 17px;
+  letter-spacing: -2px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.testimonials .testimonial-rating-label {
+  color: #0756e8;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Review */
+.testimonials .testimonial-review {
+  margin: 0;
+  color: #444;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 20px;
+  }
+
+  .testimonials .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .testimonials .testimonial-card {
+    padding: 24px 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .testimonials {
+    padding: 16px;
+  }
+
+  .testimonials .testimonial-header {
+    gap: 16px;
+  }
+
+  .testimonials .testimonial-photo-wrap {
+    flex-basis: 56px;
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials * {
+    scroll-behavior: auto;
+  }
+}
