@@ -117,7 +117,6 @@ export default async function decorate(block) {
 
   const navSections = nav.querySelector('.nav-sections');
   const navTools = nav.querySelector('.nav-tools');
-  
   if (navSections && navTools) {
     const mainRow = document.createElement('div');
     mainRow.className = 'nav-main-row';
@@ -125,7 +124,8 @@ export default async function decorate(block) {
     nav.append(mainRow);
   }
   // if (navSections) {
-  //   navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
+  //   navSections.querySelectorAll(':scope .default-content-wrapper > ul > li')
+  // .forEach((navSection) => {
   //     const subList = navSection.querySelector(':scope > ul');
   //     if (!subList) return;
   //     navSection.classList.add('nav-drop');
@@ -148,9 +148,7 @@ export default async function decorate(block) {
   //   });
   // }
 
-
   // hamburger for mobile
-  
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
